@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@500;600;700&family=Caveat:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-hand: "Caveat", cursive;
+  
+  --color-primary-blue: #4A82B8;
+  --color-dark-blue: #2B5C8F;
+  --color-soft-white: #F8FAFC;
+  --color-gold-accent: #D4A64A;
+  --color-charcoal: #1A1A1A;
+  
+  --shadow-premium: 0 20px 60px rgba(43, 92, 143, 0.15);
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* Hide scrollbar for raw horizontal scrollable layouts */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

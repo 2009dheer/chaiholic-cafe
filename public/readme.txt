@@ -1,0 +1,1 @@
+Put your custom video here and name it 'chaiholic_video.mp4' so it is served on the root directory of your app. This will play in the Home section video container and the live experience slider gallery section!

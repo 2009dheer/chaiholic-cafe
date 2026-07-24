@@ -1,0 +1,6 @@
+{
+  "name": "Chaiholic Cafe",
+  "description": "A premium luxury web application for Chaiholic Cafe, featuring direct WhatsApp franchise inquiry, interactive menu, and geolocation outlet routing.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
