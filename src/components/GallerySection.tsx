@@ -9,11 +9,11 @@ interface GallerySectionProps {
 }
 
 const galleryItems = [
-  { title: 'Cozy Celebrations', desc: 'Festive lights and warm holiday setup', url: '/gallery_christmas.jpeg' },
-  { title: 'Signature Poha', desc: 'Delicious tempered poha with herbs', url: '/gallery_poha.jpeg' },
-  { title: 'Our Iconic Facade', desc: 'Spread love and good vibes', url: '/gallery_storefront.png' },
-  { title: 'Pure Kulhad Magic', desc: 'Authentic steaming clay cup chai', url: '/gallery_kulhad_chai.png' },
-  { title: 'Chaiholic Vibes', desc: 'Take a stroll inside our cafe', url: '/gallery_video.mp4', isVideo: true }
+  { title: 'Chaiholic Vibes', desc: 'Take a stroll inside our cafe', url: '/instagram/img5.jpg' },
+  { title: 'Pure Kulhad Magic', desc: 'Authentic steaming clay cup chai', url: '/instagram/img6.jpg' },
+  { title: 'Our Iconic Facade', desc: 'Spread love and good vibes', url: '/instagram/img1.jpg' },
+  { title: 'Signature Poha', desc: 'Delicious tempered poha with herbs', url: '/instagram/img2.jpg' },
+  { title: 'Cozy Celebrations', desc: 'Festive lights and warm holiday setup', url: '/instagram/img3.jpg' }
 ];
 
 export default function GallerySection({ onImageClick }: GallerySectionProps) {
@@ -82,7 +82,7 @@ export default function GallerySection({ onImageClick }: GallerySectionProps) {
           {scrollItems.map((item, idx) => (
             <div 
               key={idx}
-              className="shrink-0 w-[350px] relative cursor-pointer group/card glass-card-dark border border-white/15"
+              className="shrink-0 w-[350px] relative cursor-pointer group/card glass-card border border-white/15 rounded-[2rem] overflow-hidden shadow-premium"
               onClick={() => onImageClick(item.url)}
             >
               <div className="h-[420px] overflow-hidden relative">

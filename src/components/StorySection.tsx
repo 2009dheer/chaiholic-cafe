@@ -107,7 +107,7 @@ const StorySection: React.FC = () => {
         </div>
 
         {/* Main Card */}
-        <div ref={cardRef} className="bg-gradient-to-br from-[#2B5C8F] to-[#1a3a5c] rounded-[2.5rem] shadow-2xl p-8 md:p-12 lg:p-16 mb-16 relative overflow-hidden">
+        <div ref={cardRef} className="glass-card-dark rounded-[2.5rem] p-8 md:p-12 lg:p-16 mb-16 relative overflow-hidden">
           {/* subtle noise texture could go here */}
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">

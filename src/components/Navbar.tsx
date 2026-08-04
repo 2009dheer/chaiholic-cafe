@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 interface NavbarProps {
   user: any;
@@ -13,6 +14,9 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen, scrollTo }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +32,21 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen
     { name: 'Menu', target: '#menu' },
     { name: 'Gallery', target: '#gallery' },
     { name: 'Outlets', target: '#outlets' },
-    { name: 'Franchise', target: '#franchise' },
+    { name: 'Franchise', target: '/franchise' },
   ];
 
   const handleNavClick = (target: string) => {
     setMobileMenuOpen(false);
-    scrollTo(target);
+    if (target.startsWith('#')) {
+      if (location.pathname !== '/') {
+         navigate('/');
+         setTimeout(() => scrollTo(target), 500);
+      } else {
+         scrollTo(target);
+      }
+    } else {
+      navigate(target);
+    }
   };
 
   const menuVariants = {
@@ -64,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Left: Logo */}
-          <div className="flex-shrink-0 cursor-pointer" onClick={() => scrollTo('#home')}>
+          <div className="flex-shrink-0 cursor-pointer" onClick={() => handleNavClick('#home')}>
             <img src="/clean_logo.png" alt="Chaiholic Logo" className="h-10 invert brightness-0" style={{ filter: 'invert(1)' }} />
           </div>
 
@@ -73,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollTo(link.target)}
+                onClick={() => handleNavClick(link.target)}
                 className="text-[#F8FAFC] font-montserrat text-sm uppercase tracking-wider relative group transition-colors hover:text-[#D4A64A]"
               >
                 {link.name}
@@ -88,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen
               {user ? (
                 <button
                   onClick={onProfileOpen}
-                  className="w-10 h-10 rounded-full border-2 border-[#D4A64A] overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D4A64A] focus:ring-offset-2 focus:ring-offset-[#2B5C8F] transition-transform hover:scale-105"
+                  className="w-10 h-10 rounded-full border-2 border-[#D4A64A] overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D4A64A] focus:ring-offset-2 focus:ring-offset-[#0c0054] transition-transform hover:scale-105"
                 >
                   <img
                     src={user.photoURL || `https://api.dicebear.com/7.x/initials/svg?seed=${user.displayName || 'User'}`}
@@ -124,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, onLogin, onSignOut, onProfileOpen
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-[60] bg-[#2B5C8F] flex flex-col justify-center items-center"
+            className="fixed inset-0 z-[60] bg-[#0c0054] flex flex-col justify-center items-center"
           >
             <button
               className="absolute top-8 right-8 text-white focus:outline-none"

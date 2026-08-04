@@ -14,6 +14,7 @@ import {
   onAuthStateChanged,
   User
 } from 'firebase/auth';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Hooks
 import { useLenis } from './hooks/useLenis';
@@ -21,24 +22,14 @@ import { useScrollProgress } from './hooks/useScrollProgress';
 
 // Components
 import Loader from './components/Loader';
-import CustomCursor from './components/CustomCursor';
 import SectionDots from './components/SectionDots';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import MarqueeStrip from './components/MarqueeStrip';
-import StorySection from './components/StorySection';
-import InstagramReels from './components/InstagramReels';
-import MenuSection from './components/MenuSection';
-import GallerySection from './components/GallerySection';
-import OutletsSection from './components/OutletsSection';
-import FranchiseSection from './components/FranchiseSection';
-import ReviewsSection from './components/ReviewsSection';
-import Footer from './components/Footer';
 import ProfileModal from './components/ProfileModal';
 import LightboxModal from './components/LightboxModal';
 
-// Data
-import { outlets } from './data';
+// Pages
+import HomePage from './pages/HomePage';
+import FranchisePage from './pages/FranchisePage';
 
 // ═══════════════════════════════════════════════
 // Firebase Configuration
@@ -59,16 +50,19 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // ═══════════════════════════════════════════════
-// Section IDs for scroll tracking
+// Section IDs for scroll tracking (Home Page Only)
 // ═══════════════════════════════════════════════
 
-const SECTION_IDS = ['home', 'story', 'signature', 'menu', 'gallery', 'outlets', 'franchise', 'reviews', 'footer'];
+const SECTION_IDS = ['home', 'story', 'signature', 'menu', 'gallery', 'outlets', 'reviews', 'footer'];
 
 // ═══════════════════════════════════════════════
 // Main Application Orchestrator
 // ═══════════════════════════════════════════════
 
 export default function App() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   // Loading state
   const [isLoading, setIsLoading] = useState(true);
 
@@ -86,6 +80,11 @@ export default function App() {
   // Initialize smooth scroll & scroll tracking
   const { scrollTo } = useLenis();
   const { activeSection } = useScrollProgress(SECTION_IDS);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   // ═══════════════════════════════════════════════
   // Firebase Auth
@@ -120,8 +119,9 @@ export default function App() {
   // Navigation
   // ═══════════════════════════════════════════════
 
-  const handleNavigate = useCallback((sectionId: string) => {
-    scrollTo(`#${sectionId}`, { duration: 1.8 });
+  const handleNavigate = useCallback((target: string) => {
+    const selector = target.startsWith('#') ? target : `#${target}`;
+    scrollTo(selector, { duration: 1.8 });
   }, [scrollTo]);
 
   // ═══════════════════════════════════════════════
@@ -137,7 +137,7 @@ export default function App() {
           clearInterval(interval);
           setTimeout(() => {
             setIsDownloadingPdf(false);
-            window.open("https://raw.githubusercontent.com/weblyfy/chaiholic-assets/main/menu.pdf", "_blank");
+            window.open("/menu.pdf", "_blank");
           }, 600);
           return 100;
         }
@@ -179,11 +179,13 @@ export default function App() {
       <div 
         className={`min-h-screen overflow-x-hidden transition-opacity duration-700 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
       >
-        {/* Section Progress Dots (right side) */}
-        <SectionDots 
-          activeSection={activeSection} 
-          onNavigate={handleNavigate} 
-        />
+        {/* Section Progress Dots (right side) - Only show on Home page */}
+        {isHomePage && (
+          <SectionDots 
+            activeSection={activeSection} 
+            onNavigate={handleNavigate} 
+          />
+        )}
 
         {/* Navigation */}
         <Navbar
@@ -194,42 +196,11 @@ export default function App() {
           scrollTo={handleNavigate}
         />
 
-        {/* ══════════════ SECTIONS ══════════════ */}
-
-        {/* 1. Cinematic Hero */}
-        <HeroSection />
-
-        {/* 2. Golden Marquee Strip */}
-        <MarqueeStrip />
-
-        {/* 3. Founder's Story */}
-        <StorySection />
-
-        {/* 4. Viral Instagram Reels */}
-        <InstagramReels />
-
-        {/* 5. Menu Gallery */}
-        <MenuSection 
-          onImageClick={(src) => setLightboxSrc(src)}
-          onDownloadPdf={handleDownloadPdf}
-        />
-
-        {/* 6. Photo & Video Gallery */}
-        <GallerySection 
-          onImageClick={(src) => setLightboxSrc(src)}
-        />
-
-        {/* 7. Outlet Locator */}
-        <OutletsSection outlets={outlets} />
-
-        {/* 8. Franchise Application */}
-        <FranchiseSection />
-
-        {/* 9. Customer Reviews */}
-        <ReviewsSection />
-
-        {/* 10. Premium Footer */}
-        <Footer />
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<HomePage setLightboxSrc={setLightboxSrc} handleDownloadPdf={handleDownloadPdf} />} />
+          <Route path="/franchise" element={<FranchisePage />} />
+        </Routes>
       </div>
 
       {/* ══════════════ MODALS & OVERLAYS ══════════════ */}

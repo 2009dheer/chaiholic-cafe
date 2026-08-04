@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,13 +107,13 @@ const HeroSection: React.FC = () => {
         />
         
         <motion.div
-          className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-lg"
+          className="flex items-center space-x-3 glass-card px-8 py-4 rounded-full border border-white/20 shadow-premium backdrop-blur-[40px]"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
         >
           <div className="w-2 h-2 rounded-full bg-[#D4A64A] animate-pulse"></div>
-          <span className="text-[#F8FAFC] font-montserrat text-sm md:text-base font-medium tracking-wide">
+          <span className="text-[#F8FAFC] font-montserrat text-sm md:text-base font-semibold tracking-wider uppercase">
             {count}+ Outlets Across India
           </span>
           <div className="w-2 h-2 rounded-full bg-[#D4A64A] animate-pulse"></div>
@@ -125,9 +126,9 @@ const HeroSection: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <a href="#franchise" className="px-8 py-3 bg-[#D4A64A] text-[#0c0054] font-montserrat font-bold tracking-wider rounded-full hover:bg-white hover:text-[#0c0054] transition-all duration-300 shadow-[0_0_20px_rgba(212,166,74,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)]">
+          <Link to="/franchise" className="px-8 py-3 bg-[#D4A64A] text-[#0c0054] font-montserrat font-bold tracking-wider rounded-full hover:bg-white hover:text-[#0c0054] transition-all duration-300 shadow-[0_0_20px_rgba(212,166,74,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)]">
             APPLY FOR FRANCHISE
-          </a>
+          </Link>
         </motion.div>
       </div>
 

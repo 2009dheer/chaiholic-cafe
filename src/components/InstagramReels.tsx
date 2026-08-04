@@ -1,15 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Play } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const reels = [
-  { id: "C6EX4ooSd40", views: "13.1M" },
-  { id: "C6ToN9dSZ-Q", views: "3.6M" },
-  { id: "C5i5uA2y55M", views: "1.7M" }
+// Genuine local media from @chaiholicindia
+const reelsData = [
+  { thumbnail: '/instagram/img1.jpg', url: 'https://www.instagram.com/chaiholicindia' },
+  { thumbnail: '/instagram/img2.jpg', url: 'https://www.instagram.com/chaiholicindia' },
+  { thumbnail: '/instagram/img3.jpg', url: 'https://www.instagram.com/chaiholicindia' },
+  { thumbnail: '/instagram/img4.jpg', url: 'https://www.instagram.com/chaiholicindia' },
 ];
 
 const InstagramReels: React.FC = () => {
@@ -56,22 +58,25 @@ const InstagramReels: React.FC = () => {
           </p>
         </div>
 
-        <div ref={cardsRef} className="flex flex-wrap justify-center gap-8 items-center">
-          {reels.map((reel, index) => (
-            <div key={index} className="relative bg-white rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform transition-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(193,53,132,0.3)] duration-500 w-[320px] h-[580px]">
-              <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/20">
-                <Play className="w-3 h-3 fill-white" /> {reel.views} Views
-              </div>
-              <iframe 
-                src={`https://www.instagram.com/reel/${reel.id}/embed`}
-                width="320"
-                height="580"
-                frameBorder="0"
-                scrolling="no"
-                allowTransparency={true}
-                className="w-full h-full relative z-10"
+        <div ref={cardsRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {reelsData.map((reel, index) => (
+            <a 
+              key={index}
+              href={reel.url}
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="glass-card rounded-[2rem] overflow-hidden group/reel relative aspect-[9/16] block cursor-pointer transform transition-all duration-500 hover:-translate-y-2 hover:shadow-gold-glow"
+            >
+              <img 
+                src={reel.thumbnail} 
+                alt={`Instagram Reel ${index + 1}`}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/reel:scale-110"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+              <div className="absolute bottom-6 left-6 opacity-0 transform translate-y-4 transition-all duration-300 group-hover/reel:opacity-100 group-hover/reel:translate-y-0">
+                <Instagram className="text-white w-6 h-6" />
+              </div>
+            </a>
           ))}
         </div>
       </div>

@@ -122,7 +122,7 @@ export default function MenuSection({ onImageClick, onDownloadPdf }: MenuSection
                 className="shrink-0 snap-center cursor-pointer transition-transform duration-500 hover:-translate-y-2"
                 onClick={() => onImageClick(src)}
               >
-                <div className="w-[340px] md:w-[400px] h-[450px] md:h-[480px] bg-white rounded-xl shadow-xl overflow-hidden p-2 relative group/card border border-gray-100">
+                <div className="w-[340px] md:w-[400px] h-[450px] md:h-[480px] glass-card rounded-xl shadow-cinematic overflow-hidden p-2 relative group/card">
                   <div className="absolute inset-0 image-glare opacity-0 group-hover/card:opacity-100 z-10 pointer-events-none"></div>
                   <img 
                     src={src} 

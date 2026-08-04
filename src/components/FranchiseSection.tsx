@@ -120,7 +120,7 @@ const FranchiseSection: React.FC = () => {
                 <div className="h-[1px] w-12 bg-gradient-to-r from-gold-accent to-transparent"></div>
               </div>
 
-              <h2 className="font-display text-7xl md:text-8xl font-black text-white leading-[0.9] mb-6">
+              <h2 className="font-display text-5xl md:text-7xl xl:text-8xl font-black text-white leading-[0.9] mb-6">
                 OWN A <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-accent via-[#FFF2D8] to-gold-accent animate-gradient-x">
                   CHAIHOLIC
@@ -162,10 +162,10 @@ const FranchiseSection: React.FC = () => {
               className="w-full max-w-lg relative"
             >
               {/* Animated Conic Gradient Border */}
-              <div className="absolute -inset-[2px] bg-gradient-to-r from-gold-accent via-[#0c0054] to-[#4A82B8] rounded-[2.5rem] opacity-70 blur-md animate-spin-slow" style={{ animationDuration: '8s' }} />
+              <div className="absolute -inset-[2px] bg-gradient-to-r from-gold-accent via-[#0c0054] to-[#0c0054] rounded-[2.5rem] opacity-70 blur-md animate-spin-slow" style={{ animationDuration: '8s' }} />
               
               <div 
-                className="relative bg-[#050024]/80 backdrop-blur-3xl rounded-[2.5rem] p-10 overflow-hidden border border-white/10"
+                className="relative bg-[#0c0054]/80 backdrop-blur-3xl rounded-[2.5rem] p-6 md:p-10 overflow-hidden border border-white/10"
                 onMouseMove={handleMouseMove}
               >
                 {/* Mouse tracking glow */}
@@ -188,7 +188,7 @@ const FranchiseSection: React.FC = () => {
                         className="peer w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-transparent focus:outline-none focus:border-gold-accent focus:bg-white/10 transition-all"
                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                       />
-                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#050024] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#050024] peer-valid:px-2 pointer-events-none">
+                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#0c0054] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#0c0054] peer-valid:px-2 pointer-events-none">
                         Full Name
                       </label>
                     </div>
@@ -198,7 +198,7 @@ const FranchiseSection: React.FC = () => {
                         className="peer w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-transparent focus:outline-none focus:border-gold-accent focus:bg-white/10 transition-all"
                         onChange={(e) => setFormData({...formData, mobile: e.target.value})}
                       />
-                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#050024] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#050024] peer-valid:px-2 pointer-events-none">
+                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#0c0054] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#0c0054] peer-valid:px-2 pointer-events-none">
                         Mobile Number
                       </label>
                     </div>
@@ -208,7 +208,7 @@ const FranchiseSection: React.FC = () => {
                         className="peer w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-transparent focus:outline-none focus:border-gold-accent focus:bg-white/10 transition-all"
                         onChange={(e) => setFormData({...formData, city: e.target.value})}
                       />
-                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#050024] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#050024] peer-valid:px-2 pointer-events-none">
+                      <label className="absolute left-5 top-4 text-white/40 transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-gold-accent peer-focus:bg-[#0c0054] peer-focus:px-2 peer-valid:-top-3 peer-valid:text-xs peer-valid:text-gold-accent peer-valid:bg-[#0c0054] peer-valid:px-2 pointer-events-none">
                         City of Interest
                       </label>
                     </div>

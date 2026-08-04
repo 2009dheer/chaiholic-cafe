@@ -61,7 +61,7 @@ export default function SignatureSection() {
     <section 
       id="signature" 
       ref={sectionRef}
-      className="relative py-24 bg-[#0B1D34] overflow-hidden"
+      className="relative py-24 bg-[#0c0054] overflow-hidden"
     >
       {/* Subtle gold particle effects - simplified as a background pattern */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" 
