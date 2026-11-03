@@ -177,14 +177,14 @@ const OutletsSection: React.FC<OutletsSectionProps> = ({ outlets }) => {
           {/* Scroll Buttons */}
           <button 
             onClick={() => scrollContainer('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-20 bg-white shadow-xl rounded-full p-3 text-dark-blue hover:text-gold-accent hover:scale-110 transition-all border border-gray-100"
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-20 bg-white shadow-xl rounded-full p-3 text-dark-blue hover:text-gold-accent hover:scale-110 transition-all border border-gray-100"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button 
             onClick={() => scrollContainer('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-20 bg-white shadow-xl rounded-full p-3 text-dark-blue hover:text-gold-accent hover:scale-110 transition-all border border-gray-100"
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-20 bg-white shadow-xl rounded-full p-3 text-dark-blue hover:text-gold-accent hover:scale-110 transition-all border border-gray-100"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

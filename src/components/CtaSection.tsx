@@ -38,9 +38,9 @@ const CtaSection: React.FC = () => {
               </a>
               <Link 
                 to="/franchise" 
-                className="bg-transparent border-2 border-gold-accent text-gold-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-gold-accent hover:text-white transition-colors duration-300 text-center"
+                className="bg-gold-accent text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#b88c3a] transition-colors duration-300 shadow-lg text-center"
               >
-                Own a Franchise
+                own a chaiholic
               </Link>
             </div>
           </motion.div>

@@ -78,8 +78,8 @@ const Footer: React.FC = () => {
               <li className="flex items-start space-x-4">
                 <MapPin className="text-[#D4A64A] shrink-0 mt-1" size={20} />
                 <span className="font-sans text-white/80 text-sm leading-relaxed">
-                  123 Cafe Avenue, Sector 18<br/>
-                  New Delhi, 110001
+                  Model Town, Vidya Niketan School Road<br/>
+                  (Opposite Raymond Store), Rohtak, Haryana
                 </span>
               </li>
               <li className="flex items-center space-x-4">
@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="font-montserrat text-xs text-white/50">
-            &copy; 2026 Chaiholic Cafe. All rights reserved.
+            NAME OF ENTERPRISE: LALIT KUMAR HUF
           </p>
           <div className="flex items-center space-x-3">
             <span className="font-montserrat text-xs text-white/50">Designed by</span>
