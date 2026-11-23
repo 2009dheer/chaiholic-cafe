@@ -7,16 +7,16 @@ import IndiaMapLocations from '../components/IndiaMapLocations';
 export default function FranchisePage() {
   const [ordersPerDay, setOrdersPerDay] = useState<number>(300);
   const [aov, setAov] = useState<number>(150);
+  const [foodCostPercent, setFoodCostPercent] = useState<number>(30);
   const [rent, setRent] = useState<number>(60000);
   const [salary, setSalary] = useState<number>(80000);
-  const [electricity, setElectricity] = useState<number>(15000);
-  const [misc, setMisc] = useState<number>(10000);
+  const [misc, setMisc] = useState<number>(25000);
   const [totalInvestment, setTotalInvestment] = useState<number>(1800000);
 
   const dailyRevenue = ordersPerDay * aov;
   const monthlyRevenue = dailyRevenue * 30;
-  const cogs = monthlyRevenue * 0.3; 
-  const totalMonthlyExpenses = rent + salary + electricity + misc + cogs;
+  const foodCost = monthlyRevenue * (foodCostPercent / 100); 
+  const totalMonthlyExpenses = rent + salary + misc + foodCost;
   const monthlyNetProfit = monthlyRevenue - totalMonthlyExpenses;
   const roiMonths = monthlyNetProfit > 0 ? totalInvestment / monthlyNetProfit : 0;
   
@@ -180,8 +180,10 @@ export default function FranchisePage() {
               {[
                 { label: "Orders Per Day", val: ordersPerDay, setter: setOrdersPerDay, min: 50, max: 1000, step: 10, format: (v: number) => v },
                 { label: "Average Order Value (AOV)", val: aov, setter: setAov, min: 100, max: 500, step: 10, format: formatCurrency },
+                { label: "Food Cost (% of Revenue)", val: foodCostPercent, setter: setFoodCostPercent, min: 15, max: 50, step: 1, format: (v: number) => `${v}% (${formatCurrency(monthlyRevenue * (v / 100))})` },
                 { label: "Monthly Rent", val: rent, setter: setRent, min: 20000, max: 250000, step: 5000, format: formatCurrency },
                 { label: "Staff Salaries", val: salary, setter: setSalary, min: 30000, max: 200000, step: 5000, format: formatCurrency },
+                { label: "Misc Expenses", val: misc, setter: setMisc, min: 5000, max: 80000, step: 1000, format: formatCurrency },
                 { label: "Total Capital Investment", val: totalInvestment, setter: setTotalInvestment, min: 1000000, max: 3000000, step: 100000, format: formatCurrency }
               ].map((control, i) => (
                 <div key={i} className="relative group">
@@ -216,8 +218,16 @@ export default function FranchisePage() {
                   <p className="text-4xl font-bold">{formatCurrency(monthlyRevenue)}</p>
                 </div>
                 <div className="pb-6 border-b border-white/10">
-                  <p className="text-white/60 mb-2 font-montserrat uppercase tracking-wider text-sm">Total Monthly Expenses</p>
-                  <p className="text-3xl font-bold text-red-300/80">{formatCurrency(totalMonthlyExpenses)}</p>
+                  <div className="flex justify-between items-baseline mb-2">
+                    <p className="text-white/60 font-montserrat uppercase tracking-wider text-sm">Total Monthly Expenses</p>
+                    <p className="text-3xl font-bold text-red-300/80">{formatCurrency(totalMonthlyExpenses)}</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-white/50 pt-2 font-mono">
+                    <div>• Food Cost: {formatCurrency(foodCost)}</div>
+                    <div>• Rent: {formatCurrency(rent)}</div>
+                    <div>• Staff Salaries: {formatCurrency(salary)}</div>
+                    <div>• Misc Expenses: {formatCurrency(misc)}</div>
+                  </div>
                 </div>
                 <div className="pb-6 border-b border-[#D4A64A]/30">
                   <p className="text-[#D4A64A]/80 mb-2 font-montserrat uppercase tracking-wider text-sm">Estimated Net Profit (Monthly)</p>
