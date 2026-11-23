@@ -66,7 +66,7 @@ export default function FranchisePage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative w-full h-[500px]"
+              className="relative w-full flex items-center justify-center"
             >
               <IndiaMapLocations />
             </motion.div>
